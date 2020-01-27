@@ -16,7 +16,7 @@ and then use it in your project like so:
 import "github.com/roelofjan-elsinga/dates"
 
 func someFunctionName() {
-    date := dates.DateStringToTime("2020-01-01")
+    time, err := dates.DateStringToTime("2020-01-01")
 }
 ```
 
