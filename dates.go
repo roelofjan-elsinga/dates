@@ -1,0 +1,87 @@
+package dates
+
+import (
+	"math"
+	"time"
+)
+
+// DateFormat represents the parsing format for a date string
+// TimeFormat represents the parsing format for a time string
+// DateTimeFormat represents the parsing format for a date time string
+const (
+	DateFormat     = "2006-01-02"
+	TimeFormat     = "03:04:05"
+	DateTimeFormat = "2006-01-02 15:04:05"
+)
+
+// DateStringToTime parses a date string to a Time struct
+func DateStringToTime(date string) (time.Time, error) {
+	return time.Parse(DateFormat, date)
+}
+
+// DateTimeStringToTime parses a date time string to a Time struct
+func DateTimeStringToTime(date string) (time.Time, error) {
+	return time.Parse(DateTimeFormat, date)
+}
+
+// GetDateThisMorning sets the time for today at midnight (in the morning, not evening)
+func GetDateThisMorning() time.Time {
+	return SetTimeToBeginDay(time.Now())
+}
+
+// SetTimeToNoon sets the given date to 00:00:00.0
+func SetTimeToNoon(date time.Time) time.Time {
+	return time.Date(date.Year(), date.Month(), date.Day(), 12, 0, 0, 0, time.UTC)
+}
+
+// SetTimeToBeginDay sets the given date to 00:00:00.0
+func SetTimeToBeginDay(date time.Time) time.Time {
+	return time.Date(date.Year(), date.Month(), date.Day(), 0, 0, 0, 0, time.UTC)
+}
+
+// SetTimeToEndDay sets the given date to 23:59:59.99
+func SetTimeToEndDay(date time.Time) time.Time {
+	return time.Date(date.Year(), date.Month(), date.Day(), 23, 59, 59, 99, time.UTC)
+}
+
+// GetTimeStringFromTime formats a Time object to a time string
+func GetTimeStringFromTime(date time.Time) string {
+	return date.Format(TimeFormat)
+}
+
+// GetDateStringFromTime formats a Time object to a time string
+func GetDateStringFromTime(date time.Time) string {
+	return date.Format(DateFormat)
+}
+
+// GetDateTimeStringFromTime formats a Time object to a date time string
+func GetDateTimeStringFromTime(date time.Time) string {
+	return date.Format(DateTimeFormat)
+}
+
+// DifferenceInDays gets the difference of the given dates in days
+func DifferenceInDays(startDate time.Time, endDate time.Time) int {
+	duration := endDate.Sub(startDate)
+
+	return RoundFloatToInt(duration.Seconds() / 86400)
+}
+
+// DifferenceInHours gets the difference of the given dates in hours
+func DifferenceInHours(startDate time.Time, endDate time.Time) int {
+	duration := endDate.Sub(startDate)
+
+	return RoundFloatToInt(duration.Hours())
+}
+
+// RoundFloatToInt rounds off any floats to integers
+func RoundFloatToInt(input float64) int {
+	var result float64
+	if input < 0 {
+		result = math.Ceil(input - 0.5)
+	} else {
+		result = math.Floor(input + 0.5)
+	}
+	// only interested in integer, ignore fractional
+	i, _ := math.Modf(result)
+	return int(i)
+}
