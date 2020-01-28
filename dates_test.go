@@ -171,3 +171,33 @@ func TestIsSameOrBeforeReturnsTrueIfBothDatesAreEqual(t *testing.T) {
 
 	assert.Equal(t, true, result)
 }
+
+func TestIsSameOrAfterReturnsTrueIfDateAfterComparisonDate(t *testing.T) {
+	date := time.Now().AddDate(0, 0, 7)
+
+	comparisonDate := time.Now()
+
+	result := IsSameOrAfter(date, comparisonDate)
+
+	assert.Equal(t, true, result)
+}
+
+func TestIsSameOrAfterReturnsFalseIfDateBeforeComparisonDate(t *testing.T) {
+	date := time.Now()
+
+	comparisonDate := time.Now().AddDate(0, 0, 7)
+
+	result := IsSameOrAfter(date, comparisonDate)
+
+	assert.Equal(t, false, result)
+}
+
+func TestIsSameOrAfterReturnsTrueIfBothDatesAreEqual(t *testing.T) {
+	date := time.Now()
+
+	comparisonDate := date
+
+	result := IsSameOrAfter(date, comparisonDate)
+
+	assert.Equal(t, true, result)
+}

@@ -90,3 +90,8 @@ func roundFloatToInt(input float64) int {
 func IsSameOrBefore(date time.Time, comparison time.Time) bool {
 	return date.Equal(comparison) || date.Before(comparison)
 }
+
+// IsSameOrAfter determines whether the first date is equal or after the second date
+func IsSameOrAfter(date time.Time, comparison time.Time) bool {
+	return date.Equal(comparison) || date.After(comparison)
+}
