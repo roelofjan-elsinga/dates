@@ -139,3 +139,35 @@ func TestGetTimeStringFromTimeReturnsCorrectDateTimeString(t *testing.T) {
 
 	assert.Equal(t, "12:00:00", date)
 }
+
+func TestIsSameOrBeforeReturnsTrueIfDateBeforeComparisonDate(t *testing.T) {
+
+	date := time.Now()
+
+	comparisonDate := time.Now().AddDate(0, 0, 7)
+
+	result := IsSameOrBefore(date, comparisonDate)
+
+	assert.Equal(t, true, result)
+}
+
+func TestIsSameOrBeforeReturnsFalseIfDateAfterComparisonDate(t *testing.T) {
+
+	date := time.Now().AddDate(0, 0, 7)
+
+	comparisonDate := time.Now()
+
+	result := IsSameOrBefore(date, comparisonDate)
+
+	assert.Equal(t, false, result)
+}
+
+func TestIsSameOrBeforeReturnsTrueIfBothDatesAreEqual(t *testing.T) {
+	date := time.Now()
+
+	comparisonDate := date
+
+	result := IsSameOrBefore(date, comparisonDate)
+
+	assert.Equal(t, true, result)
+}

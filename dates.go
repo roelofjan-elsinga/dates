@@ -85,3 +85,8 @@ func roundFloatToInt(input float64) int {
 	i, _ := math.Modf(result)
 	return int(i)
 }
+
+// IsSameOrBefore determines whether the first date is equal or before the second date
+func IsSameOrBefore(date time.Time, comparison time.Time) bool {
+	return date.Equal(comparison) || date.Before(comparison)
+}
