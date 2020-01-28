@@ -63,18 +63,18 @@ func GetDateTimeStringFromTime(date time.Time) string {
 func DifferenceInDays(startDate time.Time, endDate time.Time) int {
 	duration := endDate.Sub(startDate)
 
-	return RoundFloatToInt(duration.Seconds() / 86400)
+	return roundFloatToInt(duration.Seconds() / 86400)
 }
 
 // DifferenceInHours gets the difference of the given dates in hours
 func DifferenceInHours(startDate time.Time, endDate time.Time) int {
 	duration := endDate.Sub(startDate)
 
-	return RoundFloatToInt(duration.Hours())
+	return roundFloatToInt(duration.Hours())
 }
 
-// RoundFloatToInt rounds off any floats to integers
-func RoundFloatToInt(input float64) int {
+// roundFloatToInt rounds off any floats to integers
+func roundFloatToInt(input float64) int {
 	var result float64
 	if input < 0 {
 		result = math.Ceil(input - 0.5)

@@ -100,11 +100,11 @@ func TestDifferenceInHoursReturnsTheCorrectNumber(t *testing.T) {
 
 func TestRoundFloatToIntReturnsRoundedOffInteger(t *testing.T) {
 
-	roundDownValue := RoundFloatToInt(3.4)
+	roundDownValue := roundFloatToInt(3.4)
 
 	assert.Equal(t, 3, roundDownValue, "The rounded number should be 3")
-	assert.Equal(t, 4, RoundFloatToInt(3.5), "The rounded number should be 4")
-	assert.Equal(t, 4, RoundFloatToInt(3.6), "The rounded number should be 4")
+	assert.Equal(t, 4, roundFloatToInt(3.5), "The rounded number should be 4")
+	assert.Equal(t, 4, roundFloatToInt(3.6), "The rounded number should be 4")
 }
 
 func TestGetDateTimeStringFromTimeReturnsCorrectDateTimeString(t *testing.T) {
