@@ -107,37 +107,48 @@ func TestRoundFloatToIntReturnsRoundedOffInteger(t *testing.T) {
 	assert.Equal(t, 4, roundFloatToInt(3.6), "The rounded number should be 4")
 }
 
-func TestGetDateTimeStringFromTimeReturnsCorrectDateTimeString(t *testing.T) {
+func TestDateTimeStringFromTimeReturnsCorrectDateTimeString(t *testing.T) {
 
 	dateTime := "2020-01-01 12:00:00"
 
 	time, _ := DateTimeStringToTime(dateTime)
 
-	date := GetDateTimeStringFromTime(time)
+	date := DateTimeStringFromTime(time)
 
 	assert.Equal(t, dateTime, date)
 }
 
-func TestGetDateStringFromTimeReturnsCorrectDateTimeString(t *testing.T) {
+func TestDateStringFromTimeReturnsCorrectDateString(t *testing.T) {
 
 	dateTime := "2020-01-01 12:00:00"
 
 	time, _ := DateTimeStringToTime(dateTime)
 
-	date := GetDateStringFromTime(time)
+	date := DateStringFromTime(time)
 
 	assert.Equal(t, "2020-01-01", date)
 }
 
-func TestGetTimeStringFromTimeReturnsCorrectDateTimeString(t *testing.T) {
+func TestTimeStringFromTimeReturnsCorrectTimeString(t *testing.T) {
 
 	dateTime := "2020-01-01 12:00:00"
 
 	time, _ := DateTimeStringToTime(dateTime)
 
-	date := GetTimeStringFromTime(time)
+	date := TimeStringFromTime(time)
 
 	assert.Equal(t, "12:00:00", date)
+}
+
+func TestTimeStringFromTimeReturns24HourFormatTimeString(t *testing.T) {
+
+	dateTime := "2020-01-01 15:00:00"
+
+	time, _ := DateTimeStringToTime(dateTime)
+
+	date := TimeStringFromTime(time)
+
+	assert.Equal(t, "15:00:00", date)
 }
 
 func TestIsSameOrBeforeReturnsTrueIfDateBeforeComparisonDate(t *testing.T) {

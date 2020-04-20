@@ -28,9 +28,9 @@ func someFunctionName() {
 - **SetTimeToNoon(date time.Time) time.Time** - Get today's date at 12:00:00
 - **SetTimeToBeginDay(date time.Time) time.Time** - Get the provided date at midnight (Morning: 00:00:00:00)
 - **SetTimeToEndDay(date time.Time) time.Time** - Get the provided date at midnight (Evening: 23:59:59:99)
-- **GetTimeStringFromTime(date time.Time) string** - Convert a time.Time object to a time string (12:00:00)
-- **GetDateStringFromTime(date time.Time) string** - Convert a time.Time object to a date string (2020-01-01)
-- **GetDateTimeStringFromTime(date time.Time) string** - Convert a time.Time object to a date time string (2020-01-01 12:00:00)
+- **TimeStringFromTime(date time.Time) string** - Convert a time.Time object to a time string (12:00:00)
+- **DateStringFromTime(date time.Time) string** - Convert a time.Time object to a date string (2020-01-01)
+- **DateTimeStringFromTime(date time.Time) string** - Convert a time.Time object to a date time string (2020-01-01 12:00:00)
 - **DifferenceInDays(startDate time.Time, endDate time.Time) int** - Get the difference between the given dates in days
 - **DifferenceInHours(startDate time.Time, endDate time.Time) int** - Get the difference between the given dates in hours
 - **RoundFloatToInt(input float64) int** - Round a float64 off to an int

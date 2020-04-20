@@ -10,7 +10,7 @@ import (
 // DateTimeFormat represents the parsing format for a date time string
 const (
 	DateFormat     = "2006-01-02"
-	TimeFormat     = "03:04:05"
+	TimeFormat     = "15:04:05"
 	DateTimeFormat = "2006-01-02 15:04:05"
 )
 
@@ -44,18 +44,18 @@ func SetTimeToEndDay(date time.Time) time.Time {
 	return time.Date(date.Year(), date.Month(), date.Day(), 23, 59, 59, 99, time.UTC)
 }
 
-// GetTimeStringFromTime formats a Time object to a time string
-func GetTimeStringFromTime(date time.Time) string {
+// TimeStringFromTime formats a Time object to a time string
+func TimeStringFromTime(date time.Time) string {
 	return date.Format(TimeFormat)
 }
 
-// GetDateStringFromTime formats a Time object to a time string
-func GetDateStringFromTime(date time.Time) string {
+// DateStringFromTime formats a Time object to a time string
+func DateStringFromTime(date time.Time) string {
 	return date.Format(DateFormat)
 }
 
-// GetDateTimeStringFromTime formats a Time object to a date time string
-func GetDateTimeStringFromTime(date time.Time) string {
+// DateTimeStringFromTime formats a Time object to a date time string
+func DateTimeStringFromTime(date time.Time) string {
 	return date.Format(DateTimeFormat)
 }
 
